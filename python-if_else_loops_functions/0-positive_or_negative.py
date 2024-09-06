@@ -8,4 +8,4 @@ elif number > 0:
     sign = "is positive"
 else:
     sign = "is zero"
-print("{:d}".format(number), sign)
+print("{:d} {}".format(number, sign))
