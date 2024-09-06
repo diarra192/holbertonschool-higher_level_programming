@@ -2,21 +2,19 @@
 
 import sys
 
-if __name__ != "__main__":
-    exit()
+if __name__ == "__main__":
+    # Récupérer les arguments
+    argv = sys.argv
+    argc = len(argv) - 1  # Ne pas compter le nom du script
 
-argStr = "{:d} argument"
-argc = len(sys.argv) - 1
-if argc == 0:
-    argStr += 's.'
-elif argc == 1:
-    argStr += ':'
-else:
-    argStr += 's:'
-print(argStr.format(argc))
+    # Afficher le nombre d'arguments
+    if argc == 0:
+        print("0 arguments.")
+    elif argc == 1:
+        print("1 argument:")
+    else:
+        print(f"{argc} arguments:")
 
-i = 0
-for arg in sys.argv:
-    if i != 0:
-        print("{:d}: {:s}".format(i, arg))
-    i += 1i
+    # Afficher chaque argument avec sa position
+    for i in range(1, len(argv)):
+        print(f"{i}: {argv[i]}")
