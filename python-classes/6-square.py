@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+""" class square that has attributes """
+
 
 class Square:
     """
@@ -7,10 +9,12 @@ class Square:
         size
     some attributes are protected from input.
     """
+
     def __init__(self, size=0, position=(0, 0)):
         """
         initialization function for our square clasee
         """
+
         if self.__validate_size(size):
             self.__size = size
         if self.__validate_pos(position):
@@ -21,6 +25,7 @@ class Square:
         """
         getter for size attribute
         """
+
         return self.__size
 
     @size.setter
@@ -28,6 +33,7 @@ class Square:
         """
         setter for size attribute
         """
+
         if self.__validate_size(value):
             self.__size = value
 
@@ -36,6 +42,7 @@ class Square:
         """
         getter for position attribute
         """
+
         return self.__position
 
     @position.setter
@@ -43,6 +50,7 @@ class Square:
         """
         setter for position attribute
         """
+
         if self.__validate_pos(value):
             self.__position = value
 
@@ -50,6 +58,7 @@ class Square:
         """
         calculates the area of the square
         """
+
         return self.__size ** 2
 
     def my_print(self):
@@ -57,6 +66,7 @@ class Square:
         prints the square using '#' characters
         also takes into account position (x, y) offsets
         """
+
         i = 0
         if self.__size == 0:
             print()
@@ -77,6 +87,7 @@ class Square:
         """
         validates the size, checking for errors
         """
+
         if type(size) != int:
             raise TypeError("size must be an integer")
         elif size < 0:
@@ -89,7 +100,9 @@ class Square:
         """
         validates the position, checking for type errors
         """
+
         if not isinstance(position, type((0, 0))):
             raise TypeError("position must be a tuple of 2 positive integers")
             return False
         return True
+
