@@ -1,5 +1,10 @@
 #!/usr/bin/python3
+
+""" class that has define """
+
+
 Square = __import__('4-square').Square
+"""class thas define attribut"""
 
 my_square = Square(89)
 print("Area: {} for size: {}".format(my_square.area(), my_square.size))
@@ -12,3 +17,4 @@ try:
     print("Area: {} for size: {}".format(my_square.area(), my_square.size))
 except Exception as e:
     print(e)
+
