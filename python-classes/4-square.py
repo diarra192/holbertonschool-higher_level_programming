@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
 """ class that has define """
+"""class that has define """
+"""class that has define"""
 
 
 Square = __import__('4-square').Square
