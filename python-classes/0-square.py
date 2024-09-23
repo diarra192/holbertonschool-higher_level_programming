@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-"""class square that defines a square"""
+"""class square that defines a square
+That class defin the squar
 
-class Square:
-"""Cette classe definit un carré"""
-    
+"""
+
+class Square:  
 
     pass
