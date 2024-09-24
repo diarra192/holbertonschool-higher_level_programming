@@ -21,16 +21,16 @@ Basic MyList usage (pos, neg, zero):
 
 Basic print_sorted usage:
     >>> my_list.print_sorted()
-    [-1, 0, 3, 4
-Basic MyList usage (pos, neg, zero):
+    [-1, 0, 3, 4]
+
+Big int MyList usage:
     >>> my_list = MyList()
+    >>> my_list.append(999999999999)
     >>> my_list.append(-1)
-    >>> my_list.append(4)
-    >>> my_list.append(3)
     >>> my_list.append(0)
     >>> print(my_list)
-    [-1, 4, 3, 0]
+    [999999999999, -1, 0]
 
-Basic print_sorted usage:
+Big int print_sorted usage:
     >>> my_list.print_sorted()
-    [-1, 0, 3, 4]i]
+    [-1, 0, 999999999999]

@@ -13,29 +13,7 @@ First import class ``BaseGeometry``
 
 Now use it:
 
-Function area():Basic MyList usage (pos, neg, zero):
-    >>> my_list = MyList()
-    >>> my_list.append(-1)
-    >>> my_list.append(4)
-    >>> my_list.append(3)
-    >>> my_list.append(0)
-    >>> print(my_list)
-    [-1, 4, 3, 0]
-
-Basic print_sorted usage:
-    >>> my_list.print_sorted()
-    [-1, 0, 3, 4]Basic MyList usage (pos, neg, zero):
-    >>> my_list = MyList()
-    >>> my_list.append(-1)
-    >>> my_list.append(4)
-    >>> my_list.append(3)
-    >>> my_list.append(0)
-    >>> print(my_list)
-    [-1, 4, 3, 0]
-
-Basic print_sorted usage:
-    >>> my_list.print_sorted()
-    [-1, 0, 3, 4]
+Function area():
     >>> bg = BaseGeometry()
     >>> bg.area()
     Traceback (most recent call last):
@@ -57,4 +35,35 @@ Function integer_validator negative input usage:
     ...
     ValueError: holberton must be greater than 0
 
-Function integer_validator non int input usage:'
+Function integer_validator non int input usage:
+    >>> bg.integer_validator("holberton", "school")
+    Traceback (most recent call last):
+    ...
+    TypeError: holberton must be an integer
+
+Function integer_validator infinity input usage:
+    >>> bg.integer_validator("holberton", float("inf"))
+    Traceback (most recent call last):
+    ...
+    TypeError: holberton must be an integer
+
+Function integer_validator large int input usage:
+    >>> bg.integer_validator("holberton", 9999999999999999999999999)
+
+Function integer_validator float input usage:
+    >>> bg.integer_validator("holberton", 90.8)
+    Traceback (most recent call last):
+    ...
+    TypeError: holberton must be an integer
+
+Function integer_validator list usage:
+    >>> bg.integer_validator("holberton", [90])
+    Traceback (most recent call last):
+    ...
+    TypeError: holberton must be an integer
+
+Function integer_validator no input usage:
+    >>> bg.integer_validator()
+    Traceback (most recent call last):
+    ...
+    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
