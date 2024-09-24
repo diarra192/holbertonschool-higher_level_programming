@@ -1,62 +1,55 @@
 #!/usr/bin/python3
-"""
-Defines a class Rectangle
-"""
+"""Defines a class Square"""
 
 
-class Rectangle:
-    """Representation of a rectangle"""
-    def __init__(self, width=0, height=0):
-        """Initializes the rectangle"""
-        self.width = width
-        self.height = height
+class Square:
+    """Represents a square
 
-    @property
-    def width(self):
-        """getter for the private instance attribute width"""
-        return self.__width
+    Attributes:
+        __size (int): size of a side of the square
+    """
+    def __init__(self, size=0):
+        """initializes the square
 
-    @width.setter
-    def width(self, value):
-        """setter for the private instance attribute width"""
-        if type(value) is not int:
-            raise TypeError("width must be an integer")
-        if value < 0:
-            raise ValueError("width must be >= 0")
-        self.__width = value
+        Args:
+            size (int): size of a side of the square
 
-    @property
-    def height(self):
-        """getter for the private instance attribute height"""
-        return self.__height
-
-    @height.setter
-    def height(self, value):
-        """setter for the private instance attribute height"""
-        if type(value) is not int:
-            raise TypeError("height must be an integer")
-        if value < 0:
-            raise ValueError("height must be >= 0")
-        self.__height = value
+        Returns:
+            None
+        """
+        self.size = size
 
     def area(self):
-        """returns the area of the rectangle"""
-        return self.__width * self.__height
+        """calculates the square's area
 
-    def perimeter(self):
-        """returns the perimeter of the rectangle"""
-        if self.__width == 0 or self.__height == 0:
-            return 0
-        return (self.__width * 2) + (self.__height * 2)
+        Returns:
+            The area of the square
+        """
+        return (self.__size) ** 2
 
-    def __str__(self):
-        """returns printable string representation of the rectangle"""
-        string = ""
-        if self.__width != 0 and self.__height != 0:
-            string += "\n".join("#" * self.__width
-                                for j in range(self.__height))
-        return string
+    @property
+    def size(self):
+        """getter of __size
 
-    def __repr__(self):
-        """returns a string representation of the rectangle for reproduction"""
-        return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
+        Returns:
+            The size of the square
+        """
+        return self.__size
+
+    @size.setter
+    def size(self, value):
+        """setter of __size
+
+        Args:
+            value (int): the size of a size of the square
+
+        Returns:
+            None
+        """
+        if type(value) is not int:
+            raise TypeError("size must be an integer")
+        else:
+            if value < 0:
+                raise ValueError("size must be >= 0")
+            else:
+                self.__size = value
