@@ -1,5 +1,13 @@
 #!/usr/bin/python3
+
+""" that class square define or it define this class sqaure fdggb
+"""
+
+
 class Square:
+    """ that class define tha class square google dffsq
+    """
+
     def __init__(self, size=0):
         self.__size = size
 

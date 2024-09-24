@@ -1,5 +1,13 @@
 #!/usr/bin/python3
+
+""" That class square define or that has define a square define gooogledvvd
+"""
+
+
 class Square:
+""" Thar define square or define gooogle dssssqqqd
+"""
+
     def __init__(self, size=0):
         self.__size = size
 
