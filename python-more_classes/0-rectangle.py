@@ -1,10 +1,12 @@
 #!/usr/bin/python3
+"""
+A rectangle.
+"""
 
-""" class rectangle """
 
-
-class Rectangle():
-    """empty rectangle class for later use
+class Rectangle:
     """
-    pass
+    Rectangle functions and data
+    """
 
+    pass
