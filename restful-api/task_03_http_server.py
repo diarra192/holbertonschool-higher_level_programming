@@ -1,53 +1,59 @@
+#!/usr/bin/python3
+"""Module task_03_http_server.py : Un serveur HTTP simple."""
+
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
-# Classe personnalisée pour gérer les requêtes HTTP
-class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
+class SimpleAPIHandler(BaseHTTPRequestHandler):
+    """Handler qui gère les requêtes HTTP pour l'API."""
 
-    # Gestion des requêtes GET
     def do_GET(self):
-        if self.path == '/':  # Page d'accueil
-            self.send_response(200)  # Code 200 OK
-            self.send_header('Content-type', 'text/plain')
-            self.end_headers()
-            self.wfile.write(b"Bonjour, c'est une API simple !")
+        """Gestion des requêtes GET pour différents points de terminaison."""
+        if self.path == '/':
+            # Route principale "/"
+            # Répond avec un message texte simple.
+            self.send_response(200)  # Code de réponse HTTP 200 : OK
+            self.send_header('Content-type', 'text/plain')  # Type de contenu texte
+            self.end_headers()  # Terminer les en-têtes HTTP
+            self.wfile.write(b'Bonjour, ceci est une API simple!')
 
-        elif self.path == '/data':  # Endpoint /data pour servir du JSON
-            self.send_response(200)
-            self.send_header('Content-type', 'application/json')
+        elif self.path == '/data':
+            # Route "/data"
+            # Renvoie un objet JSON avec des informations d'utilisateur.
+            self.send_response(200)  # Code 200 : OK
+            self.send_header('Content-type', 'application/json')  # Type de contenu JSON
             self.end_headers()
+            # Données JSON à envoyer en réponse
             data = {"name": "John", "age": 30, "city": "New York"}
+            # Convertir le dictionnaire Python en JSON et l'envoyer au client
             self.wfile.write(json.dumps(data).encode('utf-8'))
 
-        elif self.path == '/status':  # Endpoint /status
-            self.send_response(200)
-            self.send_header('Content-type', 'application/json')
+        elif self.path == '/status':
+            # Route "/status"
+            # Répond avec "OK" pour indiquer que le serveur est en marche.
+            self.send_response(200)  # Code 200 : OK
+            self.send_header('Content-type', 'text/plain')  # Type de contenu texte
             self.end_headers()
-            status = {"status": "OK"}
-            self.wfile.write(json.dumps(status).encode('utf-8'))
+            self.wfile.write(b'OK')
 
-        elif self.path == '/info':  # Endpoint /info
-            self.send_response(200)
-            self.send_header('Content-type', 'application/json')
+        else:
+            # Si l'URL demandée n'est pas définie, renvoie une erreur 404.
+            self.send_response(404)  # Code 404 : Not Found
+            self.send_header('Content-type', 'application/json')  # Type de contenu JSON
             self.end_headers()
-            info = {"version": "1.0", "description": "Une API simple créée avec http.server"}
-            self.wfile.write(json.dumps(info).encode('utf-8'))
-
-        else:  # Gestion des erreurs 404 pour tout autre point de terminaison
-            self.send_response(404)
-            self.send_header('Content-type', 'application/json')
-            self.end_headers()
+            # Envoyer un message d'erreur au client
             error_message = {"error": "Point de terminaison non trouvé"}
             self.wfile.write(json.dumps(error_message).encode('utf-8'))
 
-# Fonction pour démarrer le serveur sur le port 8000
-def run(server_class=HTTPServer, handler_class=SimpleHTTPRequestHandler, port=8000):
-    server_address = ('', port)
-    httpd = server_class(server_address, handler_class)
-    print(f"Serveur démarré sur le port {port}. Visitez http://localhost:{port}")
-    httpd.serve_forever()
+def run(server_class=HTTPServer, handler_class=SimpleAPIHandler, port=8000):
+    """Fonction qui lance le serveur HTTP."""
+    # Configuration de l'adresse et du port du serveur
+    server_address = ('', port)  # '' signifie écouter sur toutes les interfaces réseau disponibles
+    httpd = server_class(server_address, handler_class)  # Crée une instance du serveur HTTP
+    print(f"Le serveur est en cours d'exécution sur le port {port}...")
+    httpd.serve_forever()  # Démarre le serveur et attend les requêtes
 
-# Démarrage du serveur si le fichier est exécuté directement
-if __name__ == '__main__':
+if __name__ == "__main__":
+    # Lancer le serveur si le script est exécuté directement
     run()
 
