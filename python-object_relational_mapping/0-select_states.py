@@ -1,33 +1,24 @@
-# this module contains SQL scripts that lists all states from a database which start with "N"
+#!/usr/bin/python3
+"""Module to list all states from database hbtn_0e_0_usa"""
+
+import MySQLdb
+import sys
 
 if __name__ == "__main__":
-    from sys import argv
-    import MySQLdb
+    """Function that lists all states from database hbtn_0e_0_usa"""
+    db = MySQLdb.connect(host="localhost", port=3306, user=sys.argv[1],
+                         passwd=sys.argv[2], db=sys.argv[3])
 
-    # Connect to the MySQL server
-    db = MySQLdb.connect(
-        host="localhost",
-        user=argv[1],
-        passwd=argv[2],
-        db=argv[3],
-        port=3306
-    )
-
-
-    # Create a cursor object to interact with the database
+    # Create a cursor object
     cursor = db.cursor()
 
-    # Execute the SQL query to retrieve states
-    cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
+    # Execute the query
+    cursor.execute("SELECT * FROM states ORDER BY id ASC")
 
-    # Fetch all the rows
-    states = cursor.fetchall()
+    # print rows in a list of lists
+    for row in cursor.fetchall():
+        print(row)
 
-    # Display the results
-    for state in states:
-        print(state)
-
-
-    # Close the cursor and connection
+    # Clean up
     cursor.close()
-    db.close())
+    db.close()
