@@ -13,3 +13,4 @@ from typing import Tuple, Union
 def to_kv(k: str, v: Union[int, float]) -> Tuple[str, float]:
     """Return a tuple of string k and the square of int/float v"""
     return (k, v * v)
+

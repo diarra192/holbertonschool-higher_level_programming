@@ -13,3 +13,4 @@ def sum_list(input_list: List[float]) -> float:
     for i in input_list:
         sum += i
     return sum
+

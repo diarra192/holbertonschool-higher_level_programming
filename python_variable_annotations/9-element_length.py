@@ -13,3 +13,4 @@ def element_length(lst: Iterable[Sequence])\
         -> List[Tuple[Sequence, int]]:
     """Return a list of tuples where each tuple’s first element is string"""
     return [(i, len(i)) for i in lst]
+
